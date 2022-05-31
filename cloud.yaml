@@ -23,7 +23,7 @@ steps:
     entrypoint: sh
     args:
       - "-c"
-      - "(./cloud_sql_proxy -dir=/cloudsql -instances=<CLOUD_SQL_CONNECTION> & sleep 2) && npm run migrate"
+      - "(./cloud_sql_proxy -dir=/cloudsql -instances=tcl-execrcies:us-central1:tcl-exercises=tcp:5432 & sleep 2) && npm run migrate"
     timeout: "1200s"
     waitFor: ["npm-install", "proxy-install"]
 
