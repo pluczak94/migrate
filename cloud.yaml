@@ -1,7 +1,7 @@
 steps:
   - id: "docker-build"
     name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "${_IMAGE_NAME}", "sql-proxy/."]
+    args: ["build", "-t", "${_IMAGE_NAME}", "."]
   - id: "docker-push"
     name: "gcr.io/cloud-builders/docker"
     args: ["push", "${_IMAGE_NAME}"]
