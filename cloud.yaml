@@ -4,7 +4,7 @@ steps:
     name: gcr.io/cloud-builders/npm
     entrypoint: npm
     args:
-      - ci
+      - install
     waitFor: ["-"]
 
   # Install Cloud SQL proxy
