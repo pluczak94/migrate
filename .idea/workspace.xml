@@ -251,21 +251,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="583" y="28" key="CommitChangelistDialog2" timestamp="1654028214857">
+    <state x="583" y="28" key="CommitChangelistDialog2" timestamp="1654028789489">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="583" y="28" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1654028214857" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1654027481906">
+    <state x="583" y="28" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1654028789489" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1654028831122">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1654027481906" />
-    <state x="789" y="142" key="VCS.ChangeListViewerDialog" timestamp="1654027452762">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1654028831122" />
+    <state x="789" y="142" key="VCS.ChangeListViewerDialog" timestamp="1654028825831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="789" y="142" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1654027452762" />
-    <state x="552" y="234" key="Vcs.Push.Dialog.v2" timestamp="1654028217442">
+    <state x="789" y="142" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1654028825831" />
+    <state x="552" y="234" key="Vcs.Push.Dialog.v2" timestamp="1654028793739">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="234" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1654028217442" />
+    <state x="552" y="234" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1654028793739" />
   </component>
 </project>
