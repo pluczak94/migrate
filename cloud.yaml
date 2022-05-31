@@ -2,6 +2,9 @@ steps:
   # Install Node.js dependencies
   - id: npm-install
     name: gcr.io/cloud-builders/npm
+    entrypoint: npm
+    args:
+      - install
     waitFor: ["-"]
 
   # Install Cloud SQL proxy
