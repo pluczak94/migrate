@@ -18,14 +18,14 @@ steps:
 
   # Migrate database schema to the latest version
   # https://knexjs.org/#Migrations-CLI
-  - id: migrate
-    name: gcr.io/cloud-builders/npm
-    entrypoint: sh
-    args:
-      - "-c"
-      - "(./cloud_sql_proxy -dir=/cloudsql -instances=tcl-execrcies:us-central1:tcl-exercises=tcp:5432 & sleep 2);"
-    timeout: "1200s"
-    waitFor: ["npm-install", "proxy-install"]
+#  - id: migrate
+#    name: gcr.io/cloud-builders/npm
+#    entrypoint: sh
+#    args:
+#      - "-c"
+#      - "(./cloud_sql_proxy -dir=/cloudsql -instances=tcl-execrcies:us-central1:tcl-exercises=tcp:5432 & sleep 2);"
+#    timeout: "1200s"
+#    waitFor: ["npm-install", "proxy-install"]
   - id: migrate2
     name: gcr.io/cloud-builders/npm
     entrypoint: gcloud
