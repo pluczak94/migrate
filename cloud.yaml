@@ -13,7 +13,8 @@ steps:
       - |
         echo "FROM $_IMAGE_NAME
         RUN ls
-        COPY --from=gcr.io/cloudsql-docker/gce-proxy /cloud_sql_proxy /cloudsql/cloud_sql_proxy" > Dockerfile-proxy;
+        COPY --from=gcr.io/cloudsql-docker/gce-proxy /cloud_sql_proxy /cloudsql/cloud_sql_proxy
+        ENTRYPOINT ["/migrate.sh"]" > Dockerfile-proxy;
         docker build -f Dockerfile-proxy -t gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy .
   # For TCP connections
   - name: gcr.io/cloud-builders/docker
@@ -23,8 +24,6 @@ steps:
     id: push image
   - id: "migrate-tcp"
     name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy"
-    entrypoint: '/bin/bash'
-    args: ['migrate.sh']
 options:
   dynamic_substitutions: true
 timeout: "1200s"
