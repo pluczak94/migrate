@@ -18,23 +18,13 @@ steps:
 
   # Migrate database schema to the latest version
   # https://knexjs.org/#Migrations-CLI
-  - id: gcloud-install
-    name: gcr.io/cloud-builders/npm
-    entrypoint: sh
-    args:
-      - "-c"
-      - "curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-387.0.0-linux-x86_64.tar.gz && tar -xf google-cloud-cli-387.0.0-linux-x86_64.tar.gz && ./google-cloud-sdk/install.sh -q"
-    waitFor: ["-"]
-
-  # Migrate database schema to the latest version
-  # https://knexjs.org/#Migrations-CLI
   - id: migrate
     name: gcr.io/cloud-builders/npm
     entrypoint: sh
     args:
       - "-c"
-      - "(./cloud_sql_proxy -dir=/cloudsql -instances=tcl-execrcies:us-central1:tcl-exercises=tcp:5432 & sleep 2);"
+      - "(./cloud_sql_proxy -dir=/cloudsql -instances=tcl-execrcies:us-central1:tcl-exercises & sleep 2);"
     timeout: "1200s"
-    waitFor: ["npm-install", "proxy-install","gcloud-install"]
+    waitFor: ["npm-install", "proxy-install"]
 
 timeout: "1200s"
