@@ -21,7 +21,7 @@ steps:
         COPY --from=gcr.io/cloudsql-docker/gce-proxy /cloud_sql_proxy /cloudsql/cloud_sql_proxy
         RUN chmod 777 migrate.sh
         RUN ls -al
-        ENTRYPOINT /migrate.sh" > Dockerfile-proxy;
+        ENTRYPOINT ./migrate.sh" > Dockerfile-proxy;
         docker build -f Dockerfile-proxy -t gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy .
   # For TCP connections
   - name: gcr.io/cloud-builders/docker
