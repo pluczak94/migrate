@@ -18,8 +18,6 @@ steps:
   - id: "migrate-tcp"
     name: "${_IMAGE_NAME}-proxy"
     dir: sql-proxy
-    secretEnv:
-      - DATABASE_PASS
     entrypoint: /bin/bash
     args:
       - '-c'
