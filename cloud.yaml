@@ -1,12 +1,10 @@
 steps:
   - id: "docker-build"
-      name: "gcr.io/cloud-builders/docker"
-      args: ["build", "-t", "${_IMAGE_NAME}", "sql-proxy/."]
-
+    name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "${_IMAGE_NAME}", "sql-proxy/."]
   - id: "docker-push"
     name: "gcr.io/cloud-builders/docker"
     args: ["push", "${_IMAGE_NAME}"]
-
   - id: "docker-layer"
     name: "gcr.io/cloud-builders/docker"
     entrypoint: /bin/bash
@@ -16,7 +14,6 @@ steps:
         echo "FROM $_IMAGE_NAME
         COPY --from=gcr.io/cloudsql-docker/gce-proxy /cloud_sql_proxy /cloudsql/cloud_sql_proxy" > Dockerfile-proxy;
         docker build -f Dockerfile-proxy -t ${_IMAGE_NAME}-proxy .
-
   # For TCP connections
   - id: "migrate-tcp"
     name: "${_IMAGE_NAME}-proxy"
