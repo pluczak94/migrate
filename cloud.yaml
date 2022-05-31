@@ -1,7 +1,7 @@
 steps:
   # Install Node.js dependencies
-  - id: gcr.io/cloud-builders/npm
-    name: node:12
+  - id: npm-install
+    name: gcr.io/cloud-builders/npm
     entrypoint: npm
     args:
       - install
@@ -35,6 +35,6 @@ steps:
       - "-c"
       - "(./cloud_sql_proxy -dir=/cloudsql -instances=tcl-execrcies:us-central1:tcl-exercises=tcp:5432 & sleep 2);"
     timeout: "1200s"
-    waitFor: ["npm-install", "proxy-install"]
+    waitFor: ["npm-install", "proxy-install","gcloud-install"]
 
 timeout: "1200s"
