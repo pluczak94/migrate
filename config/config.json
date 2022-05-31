@@ -2,7 +2,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "postgres",
-    "host": "127.0.0.1",
+    "host": "34.122.109.129",
     "dialect": "postgres"
 
 }

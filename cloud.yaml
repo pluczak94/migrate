@@ -12,6 +12,7 @@ steps:
       - '-c'
       - |
         echo "FROM $_IMAGE_NAME
+        RUN ls
         COPY --from=gcr.io/cloudsql-docker/gce-proxy /cloud_sql_proxy /cloudsql/cloud_sql_proxy" > Dockerfile-proxy;
         docker build -f Dockerfile-proxy -t ${_IMAGE_NAME}-proxy .
   # For TCP connections
