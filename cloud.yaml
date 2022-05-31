@@ -1,6 +1,6 @@
 steps:
   # Install Node.js dependencies
-  - id: npm-install
+  - id: gcr.io/cloud-builders/npm
     name: node:12
     entrypoint: npm
     args:
@@ -9,7 +9,7 @@ steps:
 
   # Install Cloud SQL proxy
   - id: proxy-install
-    name: node:12
+    name: gcr.io/cloud-builders/npm
     entrypoint: sh
     args:
       - "-c"
@@ -18,8 +18,18 @@ steps:
 
   # Migrate database schema to the latest version
   # https://knexjs.org/#Migrations-CLI
+  - id: gcloud-install
+    name: gcr.io/cloud-builders/npm
+    entrypoint: sh
+    args:
+      - "-c"
+      - "curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-387.0.0-linux-x86_64.tar.gz && tar -xf google-cloud-cli-387.0.0-linux-x86_64.tar.gz && ./google-cloud-sdk/install.sh -q"
+    waitFor: ["-"]
+
+  # Migrate database schema to the latest version
+  # https://knexjs.org/#Migrations-CLI
   - id: migrate
-    name: node:12
+    name: gcr.io/cloud-builders/npm
     entrypoint: sh
     args:
       - "-c"
