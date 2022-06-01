@@ -32,8 +32,8 @@ steps:
     args:
       - '-c'
       - |
-        /cloudsql/cloud_sql_proxy -instances=tcl-execrcies:us-central1:tcl-exercises=tcp:5432 & sleep 2;
-        npm run start # for example
+        /cloudsql/cloud_sql_proxy -instances=${_INSTANCE_CONNECTION_NAME}=tcp:${_DATABASE_PORT} & sleep 2;
+        npm install && npm run start # for example
 options:
   dynamic_substitutions: true
 timeout: "1200s"
