@@ -10,24 +10,30 @@ steps:
       - push
       - 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}'
     id: push image orginal
-  - id: "docker-layer"
-    name: "gcr.io/cloud-builders/docker"
-    entrypoint: /bin/bash
+#  - id: "docker-layer"
+#    name: "gcr.io/cloud-builders/docker"
+#    entrypoint: /bin/bash
+#    args:
+#      - '-c'
+#      - |
+#        echo "FROM gcr.io/$PROJECT_ID/${_IMAGE_NAME}
+#        RUN ls
+#        COPY --from=gcr.io/cloudsql-docker/gce-proxy /cloud_sql_proxy app/cloudsql/cloud_sql_proxy" > Dockerfile-proxy;
+#        docker build -f Dockerfile-proxy -t gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy .
+#  # For TCP connections
+#  - name: gcr.io/cloud-builders/docker
+#    args:
+#      - push
+#      - 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy'
+#    id: push image
+  - id: "install-proxy"
+    name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}"
+    entrypoint: sh
     args:
-      - '-c'
-      - |
-        echo "FROM gcr.io/$PROJECT_ID/${_IMAGE_NAME}
-        RUN ls
-        COPY --from=gcr.io/cloudsql-docker/gce-proxy /cloud_sql_proxy app/cloudsql/cloud_sql_proxy" > Dockerfile-proxy;
-        docker build -f Dockerfile-proxy -t gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy .
-  # For TCP connections
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - push
-      - 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy'
-    id: push image
+      - -c
+      - "wget -O /workspace/cloud_sql_proxy https://storage.googleapis.com/cloudsql-proxy/v1.16/cloud_sql_proxy.linux.386 &&  chmod +x /workspace/cloud_sql_proxy"
   - id: "migrate-tcp"
-    name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}-proxy"
+    name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}"
     entrypoint: /bin/bash
     dir: app
     args:
