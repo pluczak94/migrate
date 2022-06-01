@@ -13,24 +13,28 @@ steps:
   - id: "docker-layer"
     name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}"
     entrypoint: /bin/bash
+    dir: app
     args:
       - '-c'
       - "wget -O cloud_sql_proxy https://storage.googleapis.com/cloudsql-proxy/v1.16/cloud_sql_proxy.linux.386 &&  chmod +x cloud_sql_proxy"
   - id: "docker-layerls"
     name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}"
     entrypoint: /bin/bash
+    dir: app
     args:
       - '-c'
-      - "ls .."
+      - "ls"
   - id: "docker-layerls2"
     name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}"
     entrypoint: /bin/bash
+    dir: app
     args:
       - '-c'
       - "pwd"
   - id: "migrate-tcp"
     name: "gcr.io/$PROJECT_ID/${_IMAGE_NAME}"
     entrypoint: sh
+    dir: app
     args:
       - '-c'
       - "./cloud_sql_proxy -instances=tcl-execrcies:us-central1:tcl-exercises=tcp:5432 & sleep 2; npm install && npm run migrate"
